@@ -43,20 +43,20 @@ dzo = z-z1;
 %setting up rayleigh range of incoming and outgoing
 zri = ki*(w2^2)/2;
 zro = ko*(w1^2)/2;
-Mi = @(a) sqrt(w2.*(1-(1i*dzi/zri))).^a;
-Mo = @(a) sqrt(w1.*(1-(1i*dzo/zro))).^a;
-Pi = @(a) sqrt(w2.*(1+(1i*dzi/zri))).^a;
-Po = @(a) sqrt(w1.*(1+(1i*dzo/zro))).^a;
+Mi = @(a) (w2.*(1-(1i*dzi/zri))).^a;
+Mo = @(a) (w1.*(1-(1i*dzo/zro))).^a;
+Pi = @(a) (w2.*(1+(1i*dzi/zri))).^a;
+Po = @(a) (w1.*(1+(1i*dzo/zro))).^a;
 %phase along optical path
 exp1 = (ko.*dzo)-(ki.*dzi);
 %relabeling wo and wi for easier use
 wo = w1;
 wi = w2;
 %for the second exponent term
-exp2 = @(a) ((r.^2).*(((wi*Mi(2)).^(-1))+((wo*Po(2)).^(-1)))).^a;
+exp2 = @(a) ((r.^2).*(((wi*Mi(1)).^(-1))+((wo*Po(1)).^(-1)))).^a;
 %now creating factors for terms raised to f+g and h+l
-fac1 = @(a) ((-Mo(2)/(2*wo))*(1+(wo*Po(2)/(wi*Mi(2))))).^a;
-fac2 = @(a) ((-Pi(2)/(2*wi))*(1+(wi*Mi(2)/(wo*Po(2))))).^a;
+fac1 = @(a) ((-Mo(1)/(2*wo))*(1+(wo*Po(1)/(wi*Mi(1))))).^a;
+fac2 = @(a) ((-Pi(1)/(2*wi))*(1+(wi*Mi(1)/(wo*Po(1))))).^a;
 %building actual exponents
 EX1 = exp(i*exp1);
 EX2 = exp(-exp2(1));
@@ -67,8 +67,8 @@ totfac = @(a,b,c,d) factorial(a).*factorial(b).*...
     factorial(c).*factorial(d);
 %note here (a,b,c,d) corresponds to (m,n,c,d)
 bfac1 = @(a,b,c,d) 2*sqrt(totfac(a,b,c,d)./...
-    (((Po(2)/wi)+(Mi(2)/wo)).^(a+b+c+d+2))).*...
-    Po(c+d-(a+b)).*Mi(a+b-(c+d)).*EX1;
+    (((Po(1)/wi)+(Mi(1)/wo)).^(a+b+c+d+2))).*...
+    sqrt(Po(c+d-(a+b)).*Mi(a+b-(c+d))).*EX1;
 %here is term for first set of summations, (f,g,h,l)
 %corresponds to same terms, doesn't include factorials involving
 %initial indices

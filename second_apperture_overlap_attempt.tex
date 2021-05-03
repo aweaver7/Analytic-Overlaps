@@ -1,0 +1,339 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+						% Document type specification %
+\documentclass[11pt]{amsart}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+							% Packages Used %
+\usepackage{geometry}                
+\geometry{letterpaper}                
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\graphicspath{}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+\pagestyle{plain}
+\addtolength{\hoffset}{-.4cm}
+\addtolength{\textwidth}{.8cm}
+\addtolength{\marginparwidth}{-20pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+							% New Commands %
+							
+							%regular%
+\newcommand{\e}{{\rm e}}				%for the natural number e.
+\newcommand{\dg}{^\dagger}				%the dagger exponent
+\newcommand{\tst}[2]{\overset{#2}{#1}}		%puts #2 in superscript size on top of #1 in regular size
+\newcommand{\dst}[2]{\underset{#2}{#1}}		%puts #2 in subscript size below the #1 in regular size
+\newcommand{\msp}[1]{\mspace{#1mu}}		%create a space in math mode of designated length in 
+										%units of 1/18 of the size of the M character
+\newcommand{\op}[1]{\mathbf{\hat{#1}}}	%for operators, this makes element bold (so not for unit vectors)
+\newcommand{\bbe}[1]{\mathcal{#1}}	%this is kind of like a cursive font
+\newcommand{\be}[1]{\mathbf{#1}}		%this is regular bold-faced
+\newcommand{\se}[1]{\mathbb{#1}}		%this is double bold-faced, so for fields like real numbers, etc.
+\newcommand{\sse}[1]{\mathfrak{#1}}	%this is the super fancy script, for things like symmetric group
+\newcommand{\BBE}[1]{$\mathcal{#1}$}	%this is kind of like a cursive font
+\newcommand{\BE}[1]{$\mathbf{#1}$}		%this is regular bold-faced
+\newcommand{\SE}[1]{$\mathbb{#1}$}		%this is double bold-faced, so for fields like real numbers, etc.
+\newcommand{\SSE}[1]{$\mathfrak{#1}$}		%this is the super fancy script, for things like symmetric group
+
+\newcommand{\dpr}[2]{\left\langle\msp{2}#1\msp{3},\msp{2}#2\msp{2}\right\rangle}	%this is the dot
+																	%product in
+																	%relaxed bracket
+																	%notation
+\newcommand{\ucorn}{\ulcorner}	%this is the upper left corner boxing in sign
+\newcommand{\dcorn}{\llcorner}	%this is the lower left corner boxing in sign
+\newcommand{\0}{\varnothing}		%this is the empty set sign
+\DeclareMathOperator*{\im}{\, \Longrightarrow \,}	%one way implication to the right operator
+\DeclareMathOperator*{\mi}{\, \Longleftarrow \,}	%one way implication to the left operator
+\DeclareMathOperator*{\bim}{\, \Longleftrightarrow \,}	%two way implication operator
+\DeclareMathOperator*{\goes}{\, \longrightarrow \,}		%the one line arrow operator
+\DeclareMathOperator*{\maps}{\, \longmapsto \,}	%the maps to operator
+\DeclareMathOperator*{\gu}{\, \nearrow \,}	%this is the goes up to monotonically symbol
+\DeclareMathOperator*{\gd}{\, \searrow \,}	%this is the goes down to monotonically symbol
+\newcommand{\cro}{\otimes}		%this is regular sized tensor product sign
+\newcommand{\su}{\oplus}		%this is a regular sized direct sum or direct product sign
+\newcommand{\ine}{\subseteq}	%this is single bar below for equals, or A \ine B is A is in or Equals B
+\newcommand{\nie}{\supseteq}	%this is single bar below for equals, or A \nie B is B is in or Equals A
+\newcommand{\inE}{\subseteqq}	%this is double bar below in/equals, or A \inE B is A is in or Equals B
+\newcommand{\niE}{\supseteqq}	%this is double bar below own/equal, or A \inE B is A owns or Equals B
+\newcommand{\nine}{\nsubseteq}	%this is not in or equal with one bar below
+\newcommand{\nnie}{\nsupseteq}	%this is not own or equal with one bar below
+\newcommand{\ninE}{\nsubseteqq}	%this is not in or equal with 2 bars below
+\newcommand{\nniE}{\nsupseteqq}	%this is not own or equal with 2 bars below
+\newcommand{\IN}{\subset}		%this is subset in so A \IN B is A is in B
+\newcommand{\NI}{\supset}		%this is set contains so A \NI B is A contains B or B is in A.
+\newcommand{\nIN}{\IN\msp{-16}/  \msp{5.5}}		%this is the set is not in sign
+\newcommand{\nNI}{\NI\msp{-16}/  \msp{5.5}}		%this is the set doesn't contain sign
+\newcommand{\iso}{\cong}		%this is isomorphism sign
+\newcommand{\ap}{\sim}			%this is single squiggly line approximation sign
+\newcommand{\apr}{\approx}		%this is double squiggly line approximation sign
+\newcommand{\ape}{\simeq}		%this is squiggly line above single bar approximately sign
+\newcommand{\app}{\approxeq}	%this is double squiggly lines above bar approximation sign
+\newcommand{\bap}{\thicksim}		%this is a thicker version of one squiggly line approximation sign
+\newcommand{\bapr}{\thickapprox}	%this is thicker version of the double squiggly line approximation sign
+\newcommand{\ti}{\cdot}			%this is simple dot times
+\newcommand{\eq}{\equiv}		%this is 3 bar equals or equivalent sign
+\newcommand{\spn}[1]{{\rm Span}\{#1\}}			%This is the Span sign
+\newcommand{\di}[1]{{\rm Dim}\{#1\}}			%This is the Dimenion sign Dim
+\newcommand{\image}[1]{{\rm Image}\{#1\}}		%This is wierd Image sign Image
+\newcommand{\ima}[1]{{\rm IM}\{#1\}}			%This is regular Image sign Im
+\newcommand{\krn}[1]{{\rm Ker}\{#1\}}			%This is the Kernel sign Ker
+\newcommand{\eps}{\epsilon}		%this is a macro for the epsilon symbol
+\newcommand{\CRO}{\bigotimes}	%this is a much larger form of tensor product
+\newcommand{\SU}{\bigoplus}	%this is a much larger form of direct sum or direct product
+\newcommand{\nin}{\notin}  		%this is the regular element not inside set symbol%
+\newcommand{\nap}{\nsim}		%this is not approximately
+\newcommand{\ho}[2]{{\rm{Hom}}_{\mathbb{#1}}(#2)}	%homomorphism set to field #1 from space #2
+\newcommand{\tx}[1]{\text{#1}}			%this is macro for text environment inside math environment
+\newcommand{\txt}[1]{\intertext{#1}}		%this is for left-alligned text in the middle of math environment
+								%note that it must follow a linebreak \\ or \\*
+\newcommand{\Der}[3]{\frac{\partial^{#3} \msp{1} #1}{\partial \msp{1} {#2}^{#3}}} %the partial derivative of #1 with 
+													 %respect to #2
+\newcommand{\der}[2]{\frac{\partial \msp{1} #1}{\partial \msp{1} {#2}}} %the partial derivative of #1 with 
+													 %respect to #2
+\newcommand{\dd}{\msp{1} {\rm{d}} \msp{1}}	%the d for small change, like dx in integral
+\newcommand{\Tder}[3]{\frac{\dd^{#3} #1}{\dd {#2}^{#3}}}	%the total derivative of #1 with respect to #2
+\newcommand{\tder}[2]{\frac{\dd #1}{\dd {#2}}}	%the total derivative of #1 with respect to #2
+\newcommand{\grad}{\nabla}				%the gradient symbol
+\newcommand{\set}[2]{\left\{\left. \ #1 \ \right\rvert \ #2 \ \right\}}	%Use to create a set
+\newcommand{\abs}[1]{\left \lvert #1 \right \rvert}	%this is the absolute value of the argument
+\newcommand{\norm}[1]{\left \lVert#1\right\rVert}	%this is the norm of some vector
+\newcommand{\seq}[3]{\left\{ #1 \right \}_{#2}^{#3}}	%this is sequence notation
+\newcommand{\smin}{\setminus}				%this is the set minus sign	
+\newcommand{\ssmin}{\smallsetminus}			%this is the small set minus sign
+\newcommand{\pp}{\partial}					%partial derivative operator
+\newcommand{\ls}[1]{\item[#1]}					%This command creates a numbering item
+
+								%Quantum Related
+\newcommand{\acom}[2]{\left\{#1,#2\right\}}		% The anti-commutator
+\newcommand{\com}[2]{\left[#1,#2\right]}			%the commutator
+\newcommand{\ket}[1]{\left \lvert #1\right \rangle}	%the ket state, or the vector of the argument.
+\newcommand{\bra}[1]{\left \langle #1 \right \rvert}	%the bra state, or dual space vector of argument
+\newcommand{\ex}[1]{\left \langle #1 \right \rangle}	%this is the expectation value of the argument
+\newcommand{\Bra}[2]{\raisebox{-.8ex}{$_{#1}$}\msp{-4}\bra{#2}}	%this is the properly aligned bra state
+\newcommand{\Ket}[2]{\ket{#1}\msp{-4}\raisebox{-.8ex}{$_{#2}$}}	%this is the properly aligned ket state
+\newcommand{\brac}[2]{\left\langle\msp{2} #1\left\lvert \msp{3.5} #2 \right.\right\rangle}	%this is the dot 																			%product in 																				%bracket quantum
+																	%notation
+\newcommand{\Brac}[4]{\raisebox{-.8ex}{$_{#1}$}\msp{-4}\left\langle\msp{2}
+#2\left\lvert \msp{3.5} #3 \right.\right\rangle\msp{-4}\raisebox{-.8ex}{$_{#4}$}}		%this is the subscript 																		% aligned dot product in 																		%bracket quantum
+																%notation
+\newcommand{\bracket}[3]{\bra{#1} #2 \ket{#3}}	%this is the composed bracket with operator inside
+\newcommand{\Bracket}[5]{\Bra{#1}{#2} #3 \Ket{#4}{#5}}	%this is the composed bracket w/operator inside and 												%properly aligned subscripts
+
+\newcommand{\tk}[1]{\newcounter{#1}}		%this creates a counter for a new environment I need to use 											%need
+\newcommand{\tkk}[2]{\newsavebox{#1,\the#1} \savebox{#1,\the#1}{#2} \stepcounter{#1}}	%this is savebox 																			%holding single item
+\newcommand{\tkkk}[3]{\newsavebox{#1,\the#1,1}  \savebox{#1,\the#1,1}{#2}  \newsavebox{#1,\the#1,2} \savebox{#1,\the#1,2}{#3} \stepcounter{#1}}	%this is savebox holding 2 items
+\newcommand{\tkkkk}[4]{\newsavebox{#1,\the#1,1}  \savebox{#1,\the#1,1}{#2}  \newsavebox{#1,\the#1,2} \savebox{#1,\the#1,2}{#3}  \newsavebox{#1,\the#1,3} \savebox{#1,\the#1,3}{#4}  \stepcounter{#1}}	%this is savebox 																			%holding 3 																				%items
+\newcommand{\tkkkkk}[5]{\newsavebox{#1,\the#1,1}  \savebox{#1,\the#1,1}{#2}  \newsavebox{#1,\the#1,2} \savebox{#1,\the#1,2}{#3}  \newsavebox{#1,\the#1,3} \savebox{#1,\the#1,3}{#4}  \newsavebox{#1,\the#1,4} \savebox{#1,\the#1,4}{#5}  \stepcounter{#1}}						%this is savebox  holding 4 items
+
+\newcommand{\inc}{include}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+						 % New Commands to Compensate for Broken Keyboard %
+\newcommand{\1}{!}
+\newcommand{\2}{@}
+\newcommand{\3}{\#}
+\newcommand{\4}{\$}
+\newcommand{\5}{\%}
+\newcommand{\6}{$^\wedge$}
+\newcommand{\7}{\&}
+\newcommand{\8}{*}
+\newcommand{\9}{(}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+						   % New Environments Section %
+%\newenvironment{hk}[1]{}{}
+%\newenvironment{hkk}[2]{}{}
+%\newenvironment{hkkk}[3]{}{}
+%\newenvironment{hkkkk}[4]{}{}
+%\newenvironment{hkkkkk}[5]{}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+							% Title Creation Section %
+\title{Second Overlap Calculation}
+\author{Alexander J. Weaver}
+\date{}                 		  % Activate to display a given date or no date
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+							% The Actual Document %
+\begin{document}
+\maketitle
+We begin with the form of a single mode (using $z_r = \frac{\pi \omega_0^2}{\lambda}$)
+\[
+A_{m,n}(x,y,z;k,\omega_0,z_0) = \sqrt{\frac{\left(1+i\frac{(z-z_0)}{z_r}\right)^{m+n}}{2^{m+n-1}\pi m!n!\left(1-i\frac{(z-z_0)}{z_r}\right)^{m+n+2}}}\frac{\e^{\frac{-\rho^2}{\omega_0^2\left(1-i\frac{(z-z_0)}{z_r}\right)}-ik(z-z_0)}}{\omega_0}\]\[\times H_m\left(\frac{\sqrt{2}x}{\omega_0\sqrt{1+\left(\frac{z-z_0}{z_r}\right)^2}}\right)H_n\left(\frac{\sqrt{2}y}{\omega_0\sqrt{1+\left(\frac{z-z_0}{z_r}\right)^2}}\right)
+\]
+so that if we call $P\eq \sqrt{\omega_0\left(1+i\frac{z-z_0}{z_r}\right)}$ and $M\eq \sqrt{\omega_0\left(1-i\frac{z-z_0}{z_r}\right)}$ we get
+\[
+A_{m,n}(\rho,\theta,z;k,\omega_0,z_0) = \frac{P^{m+n}\e^{\frac{-\rho^2}{\omega_0M^2}-ik(z-z_0)}}{\sqrt{2^{m+n-1}\pi m! n!}M^{m+n+2}}H_m\left(\frac{\sqrt{2}\rho\cos\theta}{MP}\right)H_n\left(\frac{\sqrt{2}\rho\sin\theta}{MP}\right)
+\] So that we have using o's for outgoing beam and i's for incoming and $P_{i/o} = \sqrt{\omega_0\left(1+i\frac{z-z_{i/0}}{z_{ri/ro}}\right)}$
+\[
+\brac{m,n}{c,d}(z,z_o,z_i,\omega_o,\omega_i,k_o,k_i,R)
+\]
+\[
+=\frac{2P_i^{c+d}M_o^{m+n}\e^{i\left(k_o(z-z_o)-k_i(z-z_i)\right)}}{\pi\sqrt{2^{m+n+c+d} m!n!c!d!}M_i^{c+d+2}P_o^{m+n+2}}\int_0^R\dd \rho \rho \e^{-\rho^2\left(\frac{1}{\omega_iM_i^2}+\frac{1}{\omega_oP_o^2}\right)}\int_0^{2\pi}\dd \theta
+\]
+\[
+\left[H_m\left(\frac{\sqrt{2}\rho \cos\theta}{M_oP_o}\right)H_n\left(\frac{\sqrt{2}\rho \sin\theta}{M_oP_o}\right)H_c\left(\frac{\sqrt{2}\rho \cos\theta}{M_iP_i}\right)H_d\left(\frac{\sqrt{2}\rho \sin\theta}{M_iP_i}\right)\right]
+\]
+at this point we need to use the actual form of the hermite polynomials.
+\[
+H_m(x) = m!\sum_{j=0}^{\underline{m/2}}\frac{(-1)^j(2x)^{m-2j}}{j!(m-2j)!}
+\]
+So that we have
+\[
+\brac{m,n}{c,d}(z,z_o,z_i,\omega_o,\omega_i,k_o,k_i,R)
+\]
+\[
+=\frac{\sqrt{m!n!c!d!}P_i^{c+d}M_o^{m+n}\e^{i\left(k_o(z-z_o)-k_i(z-z_i)\right)}}{\pi\sqrt{2^{m+n+c+d-2}}M_i^{c+d+2}P_o^{m+n+2}}\sum_{f=0}^{\underline{m/2}}\sum_{g=0}^{\underline{n/2}}\sum_{h=0}^{\underline{c/2}}\sum_{l=0}^{\underline{d/2}}\int_0^R \rho \dd \rho \e^{-\frac{\rho^2}{\omega_o\omega_iM_i^2P_o^2}\left(\omega_oP_o^2+\omega_iM_i^2\right)}\int_0^{2\pi}\dd \theta
+\]
+\[
+\left[\frac{(-1)^{f+g+h+l}(2^{3/2}\rho)^{m+n+c+d-2(f+g+h+l)}(\sin\theta)^{n+d-2(g+l)}(\cos\theta)^{m+c-2(f+h)}}{f!g!h!l!(m-2f)!(n-2g)!(c-2h)!(d-2l)!(M_iP_i)^{c+d-2(h+l)}(M_oP_o)^{m+n-2(f+g)}}\right]
+\]
+We saw before that
+\[
+\int_0^{2\pi} \dd \theta \sin^m\theta \cos^n\theta = \frac{2\Gamma\left(\frac{m+1}{2}\right)\Gamma\left(\frac{n+1}{2}\right)}{\Gamma\left(\frac{m+n+2}{2}\right)}
+\]
+if both $m$ and $n$ were even but 0 otherwise. This tells us $n+d$ and $m+c$ must both be even, or in other words must have the same sine, so we get zero for $x-y$ indices not matching in sign. This also means we can write 
+\[
+n+d \eq 2T\qquad m+c\eq 2Y
+\]
+So that
+\[
+\brac{m,n}{c,d}(z,z_o,z_i,\omega_o,\omega_i,k_o,k_i,R) = 
+\]
+\[
+=\frac{\sqrt{m!n!c!d!}\e^{i\left(k_o(z-z_o)-k_i(z-z_i)\right)}}{\sqrt{2^{m+n+c+d}\pi}M_i^{2(c+d+1)}P_o^{2(m+n+1)}}\sum_{f=0}^{\underline{m/2}}\sum_{g=0}^{\underline{n/2}}\sum_{h=0}^{\underline{c/2}}\sum_{l=0}^{\underline{d/2}}\int_0^R \rho \dd \rho \e^{-\frac{\rho^2}{\omega_o\omega_iM_i^2P_o^2}\left(\omega_oP_o^2+\omega_iM_i^2\right)}\int_0^{2\pi}\dd \theta
+\]
+\[
+\left[\frac{(-1)^{f+g+h+l}(M_iP_i)^{2(h+l)}(M_oP_o)^{2(f+g)}(2^{3/2}\rho)^{2(T+Y-(f+g+h+l))}(\sin\theta)^{2(T-(g+l))}(\cos\theta)^{2(Y-(f+h))}}{f!g!h!l!(m-2f)!(n-2g)!(c-2h)!(d-2l)!}\right]
+\]
+so we have integrals of the form (with the same scripts)
+\[
+\int_0^{2\pi}\dd \theta (\sin\theta)^{2(T-(g+l))}(\cos\theta)^{2(Y-(f+h))} = \frac{2\Gamma\left(T-(g+l)+\frac{1}{2}\right)\Gamma\left(Y-(f+h)+\frac{1}{2}\right)}{\Gamma\left(T+Y-(f+g+h+l)+1\right)}
+\]
+using that for integer $n$
+\[
+\Gamma\left(n+\frac{1}{2}\right)=\frac{(2n)!\sqrt{\pi}}{2^{2n}n!}
+\]
+we can then say this integral is equal to 
+\[
+\frac{\pi(2(T-(g+l)))!(2(Y-(f+h)))!}{2^{2(T+Y-(f+g+h+l))-1}(T+Y-(f+g+h+l))!(T-(g+l))!(Y-(f+h))!}
+\]
+\[
+=\frac{\pi(n+d-2(g+l))!(m+c-2(f+h))!}{2^{m+n+c+d-2(f+g+h+l)-1}\left(\frac{m+n+c+d}{2}-(f+g+h+l)\right)!\left(\frac{n+d}{2}-(g+l)\right)!\left(\frac{m+c}{2}-(f+h)\right)!}
+\]
+so that altogether we rewrite
+\[
+\brac{m,n}{c,d}(z,z_o,z_i,\omega_o,\omega_i,k_o,k_i,R) = 
+\]
+\[
+\frac{4\sqrt{ m!n!c!d!}\e^{i\left(k_o(z-z_o)-k_i(z-z_i)\right)}}{M_i^{2(c+d+1)}P_o^{2(m+n+1)}}\sum_{f=0}^{\underline{m/2}}\sum_{g=0}^{\underline{n/2}}\sum_{h=0}^{\underline{c/2}}\sum_{l=0}^{\underline{d/2}}\int_0^R  \dd \rho \e^{-\frac{\rho^2}{\omega_o\omega_iM_i^2P_o^2}\left(\omega_oP_o^2+\omega_iM_i^2\right)}
+\]
+\[
+\msp{-120}\left[\frac{(M_iP_i)^{2(h+l)}(M_oP_o)^{2(f+g)}\rho^{m+n+c+d-2(f+g+h+l)+1}(n+d-2(g+l))!(m+c-2(f+h))!}{(-2)^{f+g+h+l}f!g!h!l!(m-2f)!(n-2g)!(c-2h)!(d-2l)!\left(\frac{m+n+c+d}{2}-(f+g+h+l)\right)!\left(\frac{n+d}{2}-(g+l)\right)!\left(\frac{m+c}{2}-(f+h)\right)!}\right]
+\]
+We first make the change of variables $\gamma =\left(\frac{\rho}{R}\right)^2$
+\[
+\im \rho^2 =  R^2\gamma \qquad 2\rho \dd \rho = R^2\dd \gamma
+\]
+so that we get
+\[
+\brac{m,n}{c,d}(z,z_o,z_i,\omega_o,\omega_i,k_o,k_i,R) = 
+\]
+\[
+\frac{2R^2\sqrt{ m!n!c!d!}\e^{i\left(k_o(z-z_o)-k_i(z-z_i)\right)}}{M_i^{2(c+d+1)}P_o^{2(m+n+1)}}\sum_{f=0}^{\underline{m/2}}\sum_{g=0}^{\underline{n/2}}\sum_{h=0}^{\underline{c/2}}\sum_{l=0}^{\underline{d/2}}\int_0^1  \dd \gamma \e^{-\frac{\gamma R^2}{\omega_o\omega_iM_i^2P_o^2}\left(\omega_oP_o^2+\omega_iM_i^2\right)}
+\]
+\[
+\msp{-100}\left[\frac{(M_iP_i)^{2(h+l)}(M_oP_o)^{2(f+g)}\left(\gamma R^2\right)^{\frac{m+n+c+d}{2}-(f+g+h+l)}(n+d-2(g+l))!(m+c-2(f+h))!}{(-2)^{f+g+h+l}f!g!h!l!(m-2f)!(n-2g)!(c-2h)!(d-2l)!\left(\frac{m+n+c+d}{2}-(f+g+h+l)\right)!\left(\frac{n+d}{2}-(g+l)\right)!\left(\frac{m+c}{2}-(f+h)\right)!}\right]
+\]
+Now the integral
+\[
+F(a,m) \eq \int_0^1\dd \gamma \gamma^m\e^{-a\gamma}
+\]
+\[
+=\left.\frac{-\gamma^m\e^{-a\gamma}}{a}\right|_0^1 +\frac{m}{a}\int_0^1\dd \gamma \gamma^{m-1}\e^{-a\gamma}
+\]
+\[
+=\frac{m}{a}F(a,m-1) - \frac{\e^{-a}}{a}
+\]
+We inductively assume for any $j<m$ we have
+\[
+F(a,m) = C(j)\eq \frac{m!}{(m-j)!a^j}F(a,m-j)-\e^{-a}\sum_{k=0}^{j-1}\frac{m!}{(m-k)!a^{k+1}}
+\]
+and prove using the properties of F that
+\[
+C(j) = \frac{m!}{(m-j)!a^j}F(a,m-j)-\e^{-a}\sum_{k=0}^{j-1}\frac{m!}{(m-k)!a^{k+1}} 
+\]
+\[= \frac{m!}{(m-j)!a^j}\left(\frac{(m-j)}{a}F(a,m-(j+1))-\frac{\e^{-a}}{a}\right)-\e^{-a}\sum_{k=0}^{j-1}\frac{m!}{(m-k)!a^{k+1}} 
+\]
+\[
+=\frac{m!}{(m-(j+1))!a^{j+1}}F(a,m-(j+1))-\e^{-a}\sum_{k=0}^{(j+1)-1}\frac{m!}{(m-k)!a^{k+1}}
+\]
+\[
+=C(j+1)
+\]
+proving by induction that this works. For $j=m-1$ we get
+\[
+F(a,m) = \frac{m!}{a^{m-1}}F(a,1)-\e^{-a}\sum_{k=0}^{m-2}\frac{m!}{(m-k)!a^{k+1}}
+\]
+now 
+\[
+F(a,1) = \int_0^1 \dd \gamma \gamma \e^{-a\gamma} = \left.\frac{-\gamma\e^{-a\gamma}}{a}\right|_0^1+\frac{1}{a}\int_0^1\dd \gamma \e^{-a\gamma} =  \left.\frac{-\gamma\e^{-a\gamma}}{a}\right|_0^1-\left.\frac{\e^{-a\gamma}}{a^2}\right|_0^1
+\]
+\[
+=\frac{-\e^{-a}}{a} +\frac{1}{a^2}-\frac{\e^{-a}}{a^2}
+\]
+giving
+\[
+F(a,m) = \frac{m!}{a}\left(\frac{1}{a^{m}}-\e^{-a}\sum_{k=0}^{m}\frac{1}{(m-k)!a^{k}}\right)
+\]
+as $m$ in our above expression is $\frac{m+n+c+d}{2}-(f+g+h+l)$ our integral becomes (calling $a\eq \frac{R^2(\omega_oP_o^2+\omega_iM_i^2)}{\omega_o\omega_iM_i^2P_o^2}$
+\[
+\brac{m,n}{c,d}(z,z_o,z_i,\omega_o,\omega_i,k_o,k_i,R) = 
+\]
+\[
+\frac{2R^2\sqrt{ m!n!c!d!}\e^{i\left(k_o(z-z_o)-k_i(z-z_i)\right)}}{aM_i^{2(c+d+1)}P_o^{2(m+n+1)}}\sum_{f=0}^{\underline{m/2}}\sum_{g=0}^{\underline{n/2}}\sum_{h=0}^{\underline{c/2}}\sum_{l=0}^{\underline{d/2}}
+\]
+\[
+\msp{-110}\left[\frac{(M_iP_i)^{2(h+l)}(M_oP_o)^{2(f+g)}R^{m+n+c+d-2(f+g+h+l)}(n+d-2(g+l))!(m+c-2(f+h))!}{(-2)^{f+g+h+l}f!g!h!l!(m-2f)!(n-2g)!(c-2h)!(d-2l)!\left(\frac{n+d}{2}-(g+l)\right)!\left(\frac{m+c}{2}-(f+h)\right)!}\right]
+\]
+\[
+\times \left[\frac{1}{a^{\frac{m+n+c+d}{2}-(f+g+h+l)}}-\e^{-a}\sum_{k=0}^{\frac{m+n+c+d}{2}-(f+g+h+l)}\frac{1}{\left(\frac{m+n+c+d}{2}-(f+g+h+l+k)\right)!a^k}\right]
+\]
+We first rewrite the form of a and then group together terms of common powers and rewrite the index $k$ at the end as $k = \frac{m+n+c+d}{2}-(f+g+h+l)-k'$ where $k'$ is the old index we have
+\[
+\brac{m,n}{c,d}(z,z_o,z_i,\omega_o,\omega_i,k_o,k_i,R) = 
+\]
+\[
+\frac{2\omega_o\omega_i\sqrt{m!n!c!d!}\e^{i(k_o(z-z_o)-k_i(z-z_i))}}{(\omega_oP_o^2+\omega_iM_i^2)M_i^{2(c+d)}P_o^{2(m+n)}}\sum_{f=0}^{\underline{m/2}}\sum_{g=0}^{\underline{n/2}}\sum_{h=0}^{\underline{c/2}}\sum_{l=0}^{\underline{d/2}}
+\]
+\[
+\left[\frac{(M_iP_i)^{2(h+l)}(M_oP_o)^{2(f+g)}R^{m+n+c+d-2(f+g+h+l)}(n+d-2(g+l))!(m+c-2(f+h))!}{(-2)^{f+g+h+l}f!g!h!l!(m-2f)!(n-2g)!(c-2h)!(d-2l)!\left(\frac{n+d}{2}-(g+l)\right)!\left(\frac{m+c}{2}-(f+h)\right)!}\right]
+\]
+\[
+\times\left[\left(\frac{\omega_o\omega_iM_i^2P_o^2}{R^2\left(\omega_oP_o^2+\omega_iM_i^2\right)}\right)^{\frac{m+n+c+d}{2}-(f+g+h+l)}\right.
+\]
+\[
+\left.-\left(\frac{\omega_o\omega_iM_i^2P_o^2}{R^2\left(\omega_oP_o^2+\omega_iM_i^2\right)}\right)^{\frac{m+n+c+d}{2}-(f+g+h+l)}\e^{-\frac{R^2\left(\omega_oP_o^2+\omega_iM_i^2\right)}{\omega_o\omega_iM_i^2P_o^2}}\sum_{k=0}^{\frac{m+n+c+d}{2}-(f+g+h+l)}\frac{\left(R^2\left(\omega_oP_o^2+\omega_iM_i^2\right)\right)^k}{k!\left(\omega_o\omega_iP_o^2M_i^2\right)^k}\right]
+\]
+\[
+=\frac{2\sqrt{m!n!c!d!}\e^{i(k_o(z-z_o)-k_i(z-z_i))}}{\left(\frac{P_o^2}{\omega_i}+\frac{M_i^2}{\omega_o}\right)^{\frac{m+n+c+d+2}{2}}M_i^{c+d-(m+n)}P_o^{m+n-(c+d)}}\sum_{f=0}^{\underline{m/2}}\sum_{g=0}^{\underline{n/2}}\sum_{h=0}^{\underline{c/2}}\sum_{l=0}^{\underline{d/2}}
+\]
+\[
+\left[\frac{\left(\frac{-M_o^2}{2\omega_o}\left(1+\frac{\omega_oP_o^2}{\omega_iM_i^2}\right)\right)^{(f+g)}\left(\frac{-P_i^2}{2\omega_i}\left(1+\frac{\omega_iM_i^2}{\omega_oP_o^2}\right)\right)^{(h+l)}(n+d-2(g+l))!(m+c-2(f+h))!}{f!g!h!l!(m-2f)!(n-2g)!(c-2h)!(d-2l)!\left(\frac{n+d}{2}-(g+l)\right)!\left(\frac{m+c}{2}-(f+h)\right)!}\right]
+\]
+\[
+\times\left[1-\e^{-\frac{R^2\left(\omega_oP_o^2+\omega_iM_i^2\right)}{\omega_o\omega_iM_i^2P_o^2}}\sum_{k=0}^{\frac{m+n+c+d}{2}-(f+g+h+l)}\frac{1}{k!}\left(\frac{R^2\left(\omega_oP_o^2+\omega_iM_i^2\right)}{\omega_i\omega_oM_i^2P_o^2}\right)^k\right]
+\]
+To improve computation we use binomial coefficients if possible
+\[
+=\frac{2\sqrt{m!n!c!d!}\e^{i(k_o(z-z_o)-k_i(z-z_i))}}{\left(\frac{P_o^2}{\omega_i}+\frac{M_i^2}{\omega_o}\right)^{\frac{m+n+c+d+2}{2}}}\left(\frac{P_0}{M_i}\right)^{c+d-(m+n)}\sum_{f=0}^{\underline{m/2}}\sum_{g=0}^{\underline{n/2}}\sum_{h=0}^{\underline{c/2}}\sum_{l=0}^{\underline{d/2}}
+\]
+\[
+\left[\frac{\left(\frac{-M_o^2}{2\omega_o}\left(1+\frac{\omega_oP_o^2}{\omega_iM_i^2}\right)\right)^{f+g}\left(\frac{-P_i^2}{2\omega_i}\left(1+\frac{\omega_iM_i^2}{\omega_oP_o^2}\right)\right)^{h+l}}{f!g!h!l!\left(\frac{n+d}{2}-(g+l)\right)!\left(\frac{m+c}{2}-(f+h)\right)!}\begin{pmatrix}n+d-2(g+l)\\ n-2g\end{pmatrix}\begin{pmatrix}m+c-2(f+h)\\ m-2f \end{pmatrix}\right]
+\]
+\[
+\times \left[1-\e^{-\frac{R^2\left(\omega_oP_0^2+\omega_iM_i^2\right)}{\omega_o\omega_iM_i^2P_o^2}}\sum_{k=0}^{\frac{m+n+c+d}{2}-(f+g+h+l)}\frac{1}{k!}\left(\frac{R^2\left(\omega_oP_o^2+\omega_iM_i^2\right)}{\omega_o\omega_iM_i^2P_o^2}\right)^k\right]
+\]
+\end{document}  
+
